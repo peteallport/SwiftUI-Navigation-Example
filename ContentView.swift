@@ -17,7 +17,6 @@ struct ContentView: View {
         NavigationView {
             // Sidebar
             List {
-                Section("1st Column") {
                     NavigationLink(destination: List {
                         Text("View One (2nd Column)")
                     }
@@ -36,7 +35,6 @@ struct ContentView: View {
                     isActive: $isActive, label: {
                         Text("View One")
                     })
-                }
 
                 NavigationLink(destination: {
                     List {
@@ -106,7 +104,6 @@ struct ContentView: View {
                     }
                     .disabled(true)
                 }
-                .searchable(text: $searchText, placement: .automatic)
             }
         }
         // Change title depending on current view
