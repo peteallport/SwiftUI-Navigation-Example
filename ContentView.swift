@@ -8,41 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var searchText = ""
-
-    @State private var isActive = true
-    @State private var isViewOneActive = false
+    @State private var isViewOneActive = true
 
     var body: some View {
         NavigationView {
             // Sidebar
             List {
-                    NavigationLink(destination: List {
-                        Text("View One (2nd Column)")
-                    }
-                    .onAppear {
-                        isViewOneActive = false
-                    }
-                    .frame(minWidth: 300, idealWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
-                    .toolbar {
-                        ToolbarItem {
-                            Button {} label: {
-                                Image(systemName: "plus")
-                                    .help("New Thing")
-                            }
+                NavigationLink(destination: List {
+                    Text("View One (2nd Column)")
+                }
+                .toolbar {
+                    ToolbarItem {
+                        Button {} label: {
+                            Image(systemName: "plus")
+                                .help("New Thing")
                         }
-                    },
-                    isActive: $isActive, label: {
-                        Text("View One")
-                    })
+                    }
+                },
+                isActive: $isViewOneActive, label: {
+                    Text("View One")
+                })
 
                 NavigationLink(destination: {
                     List {
                         Text("View Two (2nd Column)")
-                    }.onAppear {
-                        isViewOneActive = true
                     }
-                    .frame(minWidth: 300, idealWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
                     .toolbar {
                         ToolbarItem {
                             Button {} label: {
@@ -57,7 +47,9 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem {
-                    Button {} label: {
+                    Button {
+                        toggleSidebar()
+                    } label: {
                         Image(systemName: "sidebar.left")
                             .help("Toggle Sidebar")
                     }
@@ -79,10 +71,8 @@ struct ContentView: View {
                 }
 
             if isViewOneActive {
-                VStack {
-                    List {
-                        Text("View Two (3rd Column)")
-                    }
+                List {
+                    Text("View One (3rd Column)")
                 }
                 .toolbar {
                     Button {} label: {
@@ -92,10 +82,8 @@ struct ContentView: View {
                     .disabled(true)
                 }
             } else {
-                VStack {
-                    List {
-                        Text("View One (3rd Column)")
-                    }
+                List {
+                    Text("View Two (3rd Column)")
                 }
                 .toolbar {
                     Button {} label: {
@@ -107,22 +95,16 @@ struct ContentView: View {
             }
         }
         // Change title depending on current view
-        .navigationTitle(isViewOneActive ? "View Two" : "View One")
+        .navigationTitle(isViewOneActive ? "View One" : "View Two")
     }
 
-//    func makeDetailListView() -> some View {
-//        if isViewOneActive {
-//            return List {
-//                Text("StudyViewDetails")
-//                Text("StudyViewDetails")
-//            }
-//        } else {
-//            return List {
-//                Text("ThingsViewDetails")
-//                Text("ThingsViewDetails")
-//            }
-//        }
-//    }
+    func toggleSidebar() {
+        #if os(macOS)
+            NSApp.keyWindow?.firstResponder?
+                .tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)),
+                              with: nil)
+        #endif
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
