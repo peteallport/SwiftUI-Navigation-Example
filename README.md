@@ -2,7 +2,7 @@
 - This is a SwiftUI Navigation Example supporting ios 15/macOS 11 and more recent projects. 
 - It uses only one `NavigationView()` and multiple `NavigationLink()`s without using `(value: P?)`. 
 
-<br>
+<hr>
 
 - This avoids more recent deployment targets such as iOS 16 or MacOS 13. Apple suggests using `NavigationStack()` or `NavigationSplitView()` to achieve more intricate views [in their documentation](https://developer.apple.com/documentation/swiftui/navigationview) but this may be prohibitive. 
 
