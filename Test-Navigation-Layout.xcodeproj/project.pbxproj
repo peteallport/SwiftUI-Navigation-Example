@@ -48,13 +48,13 @@
 		0DCBDBB32930333E00DF69B8 = {
 			isa = PBXGroup;
 			children = (
-				0D778508293188A900C72AF0 /* Assets.xcassets */,
 				0D778506293188A900C72AF0 /* ContentView.swift */,
 				0D778507293188A900C72AF0 /* ListView.swift */,
-				0D778504293188A900C72AF0 /* Preview Content */,
-				0D778502293188A900C72AF0 /* README.md */,
-				0D778501293188A900C72AF0 /* Test_Navigation_Layout.entitlements */,
 				0D778503293188A900C72AF0 /* Test_Navigation_LayoutApp.swift */,
+				0D778508293188A900C72AF0 /* Assets.xcassets */,
+				0D778501293188A900C72AF0 /* Test_Navigation_Layout.entitlements */,
+				0D778502293188A900C72AF0 /* README.md */,
+				0D778504293188A900C72AF0 /* Preview Content */,
 				0DCBDBBD2930333F00DF69B8 /* Products */,
 			);
 			sourceTree = "<group>";

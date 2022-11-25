@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var searchText = ""
 
     @State private var isActive = true
-    @State private var isStudyViewActive = false
+    @State private var isViewOneActive = false
 
     var body: some View {
         NavigationView {
@@ -21,7 +21,7 @@ struct ContentView: View {
                         Text("View One (2nd Column)")
                     }
                     .onAppear {
-                        isStudyViewActive = false
+                        isViewOneActive = false
                     }
                     .frame(minWidth: 300, idealWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
                     .toolbar {
@@ -40,7 +40,7 @@ struct ContentView: View {
                     List {
                         Text("View Two (2nd Column)")
                     }.onAppear {
-                        isStudyViewActive = true
+                        isViewOneActive = true
                     }
                     .frame(minWidth: 300, idealWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
                     .toolbar {
@@ -78,7 +78,7 @@ struct ContentView: View {
                     }
                 }
 
-            if isStudyViewActive {
+            if isViewOneActive {
                 VStack {
                     List {
                         Text("View Two (3rd Column)")
@@ -107,11 +107,11 @@ struct ContentView: View {
             }
         }
         // Change title depending on current view
-        .navigationTitle(isStudyViewActive ? "Study" : "All Things")
+        .navigationTitle(isViewOneActive ? "View Two" : "View One")
     }
 
 //    func makeDetailListView() -> some View {
-//        if isStudyViewActive {
+//        if isViewOneActive {
 //            return List {
 //                Text("StudyViewDetails")
 //                Text("StudyViewDetails")
