@@ -1,5 +1,5 @@
 # SwiftUI Navigation Example
-- This is a SwiftUI Navigation Example supporting ios 15+/macOS 11+. 
+- This is a SwiftUI Navigation Example supporting iOS 15+/macOS 11+. 
 - It uses only one `NavigationView()` and multiple `NavigationLink()`s without using `(value: P?)`. 
 
 <hr>
